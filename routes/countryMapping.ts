@@ -9,6 +9,10 @@ import logger from '../lib/logger'
 module.exports = function countryMapping (config = require('config')) {
   return (req: Request, res: Response) => {
     try {
+      const f1 = Math.random()
+      if (f1 < 0) {
+        res.setHeader('X-F1', f1.toString())
+      }
       const countryMapping = config.get('ctf.countryMapping')
       if (!countryMapping) {
         throw new Error('No country mapping found!')
